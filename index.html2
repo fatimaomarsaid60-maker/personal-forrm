@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Personal Information Form</title>
+<style>
+/* Modern Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Card Design */
+.form-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 550px;
+    border-top: 5px solid #4ecca3; /* Accent border */
+}
+
+.form-container h1 {
+    text-align: left;
+    color: #1a1a2e;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.form-container p.subtitle {
+    text-align: left;
+    color: #777;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a2e;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #edf2f7;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #2d3436;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+    border-color: #4ecca3;
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(78, 204, 163, 0.1);
+}
+
+.name-row {
+    display: flex;
+    gap: 20px;
+}
+
+.name-row .form-group {
+    flex: 1;
+}
+
+/* Radio Button Styling */
+.radio-group {
+    display: flex;
+    gap: 20px;
+    padding: 5px 0;
+}
+
+.radio-group label {
+    font-weight: 500;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: #444;
+    font-size: 15px;
+}
+
+.radio-group input[type="radio"] {
+    accent-color: #4ecca3;
+    width: 18px;
+    height: 18px;
+}
+
+textarea {
+    resize: none;
+    min-height: 120px;
+}
+
+/* Button Refactoring */
+.button-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+button {
+    padding: 14px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.btn-submit {
+    background-color: #4ecca3;
+    color: #1a1a2e;
+}
+
+.btn-reset {
+    background-color: #edf2f7;
+    color: #4a5568;
+}
+
+.btn-cancel {
+    background-color: #ff7675;
+    color: #ffffff;
+}
+
+.required {
+    color: #ff7675;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .name-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .button-row {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Personal Profile</h1>
+    <p class="subtitle">Complete your information to get started.</p>
+
+    <form id="myForm" action="#" method="post">
+
+        <div class="name-row">
+            <div class="form-group">
+                <label for="firstname">First Name <span class="required">*</span></label>
+                <input type="text" id="firstname" name="firstname" placeholder="Fatuma" required />
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name <span class="required">*</span></label>
+                <input type="text" id="lastname" name="lastname" placeholder="Omar" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth <span class="required">*</span></label>
+            <input type="date" id="dob" name="dob" required />
+        </div>
+
+        <div class="form-group">
+            <label>Gender Identity <span class="required">*</span></label>
+            <div class="radio-group">
+                <label><input type="radio" name="gender" value="male" required /> Male</label>
+                <label><input type="radio" name="gender" value="female" /> Female</label>
+                <label><input type="radio" name="gender" value="other" /> Other</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="ubuntu">On "Ubuntu" <span class="required">*</span></label>
+            <textarea id="ubuntu" name="ubuntu" placeholder="Ubuntu (I am because we are). What does community mean to you?" required></textarea>
+        </div>
+
+        <div class="button-row">
+            <button type="submit" class="btn-submit">Save Profile</button>
+            <button type="reset" class="btn-reset">Reset</button>
+            <button type="button" class="btn-cancel" onclick="window.history.back()">Cancel</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
